@@ -14,6 +14,8 @@ class TEXTURE
     //create texture object
     TEXTURE(); 
 
+    void flipOnLoad(bool boolean);
+
     void bind(); 
     void unbind(); 
     void dispose();
@@ -31,7 +33,7 @@ class TEXTURE
     void setActiveTexture(GLenum textureIndex);
 
     //bind, load, and generate image
-    void createImage(const std::string& filepath, int width, int height, int nrChannels);
+    void createImage(const std::string& filepath, int width, int height, int nrChannels, GLenum rgba);
 };
 
 #endif

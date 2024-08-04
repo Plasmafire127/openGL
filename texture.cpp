@@ -8,9 +8,15 @@ TEXTURE::TEXTURE()
     glGenTextures(1, &ID);
 }
 
-
-void TEXTURE::createImage(const std::string& filepath, int width, int height, int nrChannels)
+void TEXTURE::flipOnLoad(bool boolean)
 {
+    stbi_set_flip_vertically_on_load(boolean);  
+}
+void TEXTURE::createImage(const std::string& filepath, int width, int height, int nrChannels, GLenum rgba)
+{
+    //random code i found to enable alpha
+    glBlendFunc(GL_SRC_ALPHA, GL_ONE_MINUS_SRC_ALPHA);
+    glEnable( GL_BLEND );
     //must bind before generating image
     bind();
     
@@ -21,7 +27,7 @@ void TEXTURE::createImage(const std::string& filepath, int width, int height, in
     //generate image, may need to modify for RGBA arguments
         if(data)
     {
-        glTexImage2D(GL_TEXTURE_2D, 0, GL_RGB, width, height, 0, GL_RGB, GL_UNSIGNED_BYTE, data);
+        glTexImage2D(GL_TEXTURE_2D, 0, rgba, width, height, 0, rgba, GL_UNSIGNED_BYTE, data);
         glGenerateMipmap(GL_TEXTURE_2D);
     }
     else
