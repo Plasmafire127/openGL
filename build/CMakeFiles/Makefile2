@@ -144,12 +144,12 @@ CMakeFiles/main.dir/all: CMakeFiles/glad.dir/all
 CMakeFiles/main.dir/all: glfw-3.4/src/CMakeFiles/glfw.dir/all
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/main.dir/build.make CMakeFiles/main.dir/depend
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/main.dir/build.make CMakeFiles/main.dir/build
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --progress-dir=/Users/jake/Desktop/opengl/build/CMakeFiles --progress-num=25,26,27,28,29,30,31,32 "Built target main"
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --progress-dir=/Users/jake/Desktop/opengl/build/CMakeFiles --progress-num=25,26,27,28,29,30,31,32,33 "Built target main"
 .PHONY : CMakeFiles/main.dir/all
 
 # Build rule for subdir invocation for target.
 CMakeFiles/main.dir/rule: cmake_check_build_system
-	$(CMAKE_COMMAND) -E cmake_progress_start /Users/jake/Desktop/opengl/build/CMakeFiles 32
+	$(CMAKE_COMMAND) -E cmake_progress_start /Users/jake/Desktop/opengl/build/CMakeFiles 33
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 CMakeFiles/main.dir/all
 	$(CMAKE_COMMAND) -E cmake_progress_start /Users/jake/Desktop/opengl/build/CMakeFiles 0
 .PHONY : CMakeFiles/main.dir/rule
@@ -222,7 +222,7 @@ glfw-3.4/src/CMakeFiles/glfw.dir/clean:
 glfw-3.4/src/CMakeFiles/update_mappings.dir/all:
 	$(MAKE) $(MAKESILENT) -f glfw-3.4/src/CMakeFiles/update_mappings.dir/build.make glfw-3.4/src/CMakeFiles/update_mappings.dir/depend
 	$(MAKE) $(MAKESILENT) -f glfw-3.4/src/CMakeFiles/update_mappings.dir/build.make glfw-3.4/src/CMakeFiles/update_mappings.dir/build
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --progress-dir=/Users/jake/Desktop/opengl/build/CMakeFiles --progress-num=33 "Built target update_mappings"
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --progress-dir=/Users/jake/Desktop/opengl/build/CMakeFiles --progress-num=34 "Built target update_mappings"
 .PHONY : glfw-3.4/src/CMakeFiles/update_mappings.dir/all
 
 # Build rule for subdir invocation for target.

@@ -9,6 +9,8 @@ file(REMOVE_RECURSE
   "CMakeFiles/main.dir/stb_image_wrapper.cpp.o.d"
   "CMakeFiles/main.dir/texture.cpp.o"
   "CMakeFiles/main.dir/texture.cpp.o.d"
+  "CMakeFiles/main.dir/transform.cpp.o"
+  "CMakeFiles/main.dir/transform.cpp.o.d"
   "CMakeFiles/main.dir/vao.cpp.o"
   "CMakeFiles/main.dir/vao.cpp.o.d"
   "CMakeFiles/main.dir/vbo.cpp.o"

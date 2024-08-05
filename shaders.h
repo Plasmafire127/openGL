@@ -18,6 +18,12 @@ class Shader
         Shader(const char* vFile, const char* fFile);
         void activate();
         void dispose();
+        
+        // utility uniform functions
+        void setBool(const std::string &name, bool value) const;  
+        void setInt(const std::string &name, int value) const;   
+        void setFloat(const std::string &name, float value) const;
+        GLuint getUniformLocation(const std::string uniform) const;
 
     private:
         int debugAllShaders(GLuint& vertexShader, GLuint& fragmentShader);
@@ -27,6 +33,8 @@ class Shader
         // May be public later?
         GLuint loadFragmentShader(const char* fFile);
         GLuint loadVertexShader(const char* vFile);
+
+
 };
 
 #endif

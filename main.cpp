@@ -2,10 +2,7 @@
 #include <GLFW/glfw3.h>
 #include <iostream>
 #include <cmath>
-#include <../../glm/glm.hpp>
-#include <../../glm/gtc/matrix_transform.hpp>
-#include <../../glm/gtc/type_ptr.hpp>
-#include <cstdlib> // For rand() and srand()
+
 
 #include "ebo.h"
 #include "vbo.h"
@@ -13,6 +10,7 @@
 #include "shaders.h"
 #include "stb_image.h" 
 #include "texture.h"
+#include "transform.h"
 
 
 void framebuffer_size_callback(GLFWwindow* window, int width, int height);  
@@ -90,17 +88,6 @@ texture1.textureWrap(GL_REPEAT);
 texture1.textureFilter(GL_TEXTURE_MIN_FILTER,GL_LINEAR);
 texture1.mipmap();
 
-TEXTURE textureHand;
-textureHand.flipOnLoad(true);
-textureHand.createImage("/Users/jake/Desktop/opengl/images/hand.png", 0, 0, 0, GL_RGBA);
-
-//for translation
-int frameCounter = 0;
-float randomx = 0.0f;
-float randomy = 0.0f;
-int rotateCounter = 0;
-
-
 while(!glfwWindowShouldClose(window)) //render loop to keep drawing frames
 {
     //inputs
@@ -111,49 +98,15 @@ while(!glfwWindowShouldClose(window)) //render loop to keep drawing frames
     glClear(GL_COLOR_BUFFER_BIT); //state-using function using the current set state (^) to clear with
     shaderProgram.activate();
 
-
-    //transform things
-    float timeValue = glfwGetTime();
-    
-    if(frameCounter % 8 == 0)
-    {
-        //generate value between 0-1
-        randomx = float(rand()) / float(RAND_MAX);
-        randomy = float(rand()) / float(RAND_MAX);
-        //shift to -0.5 to 0.5
-        randomx = randomx - 0.5f;
-        randomy = randomy - 0.5f;
-    }
-    frameCounter++;
-
     //create indentity matrix
-    glm::mat4 transform = glm::mat4(1.0f);
-    //add a rotation (will apply second)
-    //glm::move to bottom right
-    transform = glm::translate(transform, glm::vec3(randomx,randomy,0.0f));
-    //change transform matrix to rotate degrees based on time on z axis
-    
-    if(frameCounter % 4 == 0)
-    {
-        if(rotateCounter % 2 == 0)
-        {
-            transform = glm::rotate(transform, 0.5f, glm::vec3(0.0f,0.0f,1.0f));  
-        }
-        else
-        {
-            transform = glm::rotate(transform, -0.5f, glm::vec3(0.0f,0.0f,1.0f));
-        }
-        rotateCounter++;
-    }
-    transform = glm::scale(transform, glm::vec3(0.2,0.2,0.2));
-    
-    //need to make this part of shaders.cpp
-    glUniform1i(glGetUniformLocation(shaderProgram.ID, "texture1"), 0); // set it manually
-    //glUniform1i(glGetUniformLocation(shaderProgram.ID, "texture2"), 1); // set it manually
+    TRANSFORM transform;
+    transform.translate(1.0,1.0,0.0);
+ 
+    shaderProgram.setInt("texture1",0);
 
-    unsigned int transformLoc = glGetUniformLocation(shaderProgram.ID, "transform");
     //set matrix
-    glUniformMatrix4fv(transformLoc, 1, GL_FALSE, glm::value_ptr(transform));
+    transform.update(shaderProgram);
+
 
     //glPolygonMode(GL_FRONT_AND_BACK, GL_LINE); //wireframe
 
@@ -161,32 +114,6 @@ while(!glfwWindowShouldClose(window)) //render loop to keep drawing frames
     texture1.setActiveTexture(GL_TEXTURE0);
     vao.linkVBO(vbo, 0,1,2);
     glDrawElements(GL_TRIANGLES, 6, GL_UNSIGNED_INT, 0);
-
-    transform = glm::mat4(1.0f);
-    transform = glm::translate(transform, glm::vec3(randomx + 0.2,randomy + 0.2,0.0f));
-    if(frameCounter % 4 == 0)
-    {
-        if(rotateCounter % 2 == 0)
-        {
-            transform = glm::rotate(transform, 0.5f, glm::vec3(0.0f,0.0f,1.0f));  
-        }
-        else
-        {
-            transform = glm::rotate(transform, -0.5f, glm::vec3(0.0f,0.0f,1.0f));
-        }
-        rotateCounter++;
-    }
-    transform = glm::scale(transform, glm::vec3(0.2,0.2,0.2));
-    glUniformMatrix4fv(transformLoc, 1, GL_FALSE, glm::value_ptr(transform));
-    textureHand.setActiveTexture(GL_TEXTURE0);
-    vao.linkVBO(vboHand, 0,1,2);
-    glDrawElements(GL_TRIANGLES, 6, GL_UNSIGNED_INT, 0);
-
-    //triangle
-    //vao.linkVBO(vbo, 0,1,2);
-    //glDrawArrays(GL_TRIANGLES, 0, 3);
-    
-    
 
     //check and call events and swap buffers
     glfwSwapBuffers(window); //two "frames", one with next drawn image and one with current. swaps when next drawn image is ready (I think?)
@@ -199,7 +126,6 @@ while(!glfwWindowShouldClose(window)) //render loop to keep drawing frames
     ebo.dispose();    
     shaderProgram.dispose();
     texture1.dispose();
-    //texture2.dispose();
     glfwTerminate(); //clean/delete all glfw allocated resources
 
     return 0;
