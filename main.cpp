@@ -64,10 +64,10 @@ int main()
 //vertex&fragment shader stuff
 
 float floor[] = {
-    0.5f,  0.5f, 0.0f, 0.0f, 0.0f,  // top right
-     0.5f, -0.5f, 0.0f, 0.0f, 0.0f,  // bottom right
-    -0.5f, -0.5f, 0.0f, 0.0f, 0.0f,  // bottom left
-    -0.5f,  0.5f, 0.0f, 0.0f, 0.0f   // top left 
+    0.5f,  0.5f, 0.0f, 1.0f, 1.0f,  // top right
+     0.5f, -0.5f, 0.0f, 1.0f, -1.0f,  // bottom right
+    -0.5f, -0.5f, 0.0f, -1.0f, -1.0f,  // bottom left
+    -0.5f,  0.5f, 0.0f, -1.0f, 1.0f   // top left 
 
 };
 
@@ -158,6 +158,11 @@ texture1.textureWrap(GL_REPEAT);
 texture1.textureFilter(GL_TEXTURE_MIN_FILTER,GL_LINEAR);
 texture1.mipmap();
 
+TEXTURE texture2;
+texture2.flipOnLoad(true);
+texture2.createImage("/Users/jake/Desktop/opengl/images/grass.jpg",0,0,0,GL_RGB);
+texture2.mipmap();
+
 while(!glfwWindowShouldClose(window)) //render loop to keep drawing frames
 {
     //deltaTime
@@ -167,7 +172,6 @@ while(!glfwWindowShouldClose(window)) //render loop to keep drawing frames
 
     //inputs
     processInput(window);
-    camera.processKeyboardInput(window);
 
     //rendering commands
     glClearColor(0.0f,0.0f,0.0f,1.0f); //state setting function, sets color to use on clear
@@ -216,6 +220,7 @@ while(!glfwWindowShouldClose(window)) //render loop to keep drawing frames
     model.scale(100.0f,100.0f,100.0f);
     model.update(shaderProgram, "model");
     vao.linkVBO(vboFloor, 0, 1);
+    texture2.setActiveTexture(0);
     glDrawElements(GL_TRIANGLES, 6, GL_UNSIGNED_INT, 0);
 
 
@@ -245,6 +250,16 @@ void processInput(GLFWwindow *window)
 {
     if(glfwGetKey(window, GLFW_KEY_ESCAPE) == GLFW_PRESS)
         glfwSetWindowShouldClose(window, true);
+    const float cameraSpeed = 0.05f; // adjust accordingly
+        if (glfwGetKey(window, GLFW_KEY_W) == GLFW_PRESS)
+            camera.ProcessKeyboard(FORWARD, deltaTime);
+        if (glfwGetKey(window, GLFW_KEY_S) == GLFW_PRESS)
+            camera.ProcessKeyboard(BACKWARD, deltaTime);
+        if (glfwGetKey(window, GLFW_KEY_A) == GLFW_PRESS)
+            camera.ProcessKeyboard(LEFT, deltaTime);
+        if (glfwGetKey(window, GLFW_KEY_D) == GLFW_PRESS)
+            camera.ProcessKeyboard(RIGHT, deltaTime);
+            
 }
 
 void mouse_callback(GLFWwindow* window, double xposIn, double yposIn)
