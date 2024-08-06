@@ -7,18 +7,15 @@ VAO::VAO()
     glGenVertexArrays(1, &ID);
 }
 
-void VAO::linkVBO(VBO& VBO, GLuint layout0, GLuint layout1, GLuint layout2)
+void VAO::linkVBO(VBO& VBO, GLuint layout0, GLuint layout1)
 {
     VBO.bind();
     //position attribute
-    glVertexAttribPointer(layout0, 3, GL_FLOAT, GL_FALSE, 8 * sizeof(float), (void*)0);
+    glVertexAttribPointer(layout0, 3, GL_FLOAT, GL_FALSE, 5 * sizeof(float), (void*)0);
     glEnableVertexAttribArray(0);
     //color attribute
-    glVertexAttribPointer(layout1, 3, GL_FLOAT, GL_FALSE, 8 * sizeof(float), (void*)(3* sizeof(float)));
+    glVertexAttribPointer(layout1, 2, GL_FLOAT, GL_FALSE, 5 * sizeof(float), (void*)(3* sizeof(float)));
     glEnableVertexAttribArray(1);
-    //texture attribute
-    glVertexAttribPointer(layout2, 2, GL_FLOAT, GL_FALSE, 8 * sizeof(float), (void*)(6*sizeof(float)));
-    glEnableVertexAttribArray(2);
     VBO.unbind();
 }
 

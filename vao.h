@@ -14,7 +14,7 @@ class VAO
     // utility uniform functions
 
     // Links a VBO to the VAO - generating and enabling a vertex attribute pointer
-    void linkVBO(VBO& VBO, GLuint layout0, GLuint layout1, GLuint layout2); //vertex attributes
+    void linkVBO(VBO& VBO, GLuint layout0, GLuint layout1); //vertex attributes
     void bind(); //bind to a buffer
     void unbind(); //unbinds buffer
     void dispose();

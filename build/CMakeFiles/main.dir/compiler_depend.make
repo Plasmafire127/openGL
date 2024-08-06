@@ -886,6 +886,7 @@ CMakeFiles/main.dir/main.cpp.o: /Users/jake/Desktop/opengl/main.cpp \
   /Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/lib/clang/15.0.0/include/stdarg.h \
   /Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/lib/clang/15.0.0/include/stddef.h \
   /Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/lib/clang/15.0.0/include/stdint.h \
+  /Users/jake/Desktop/opengl/camera.h \
   /Users/jake/Desktop/opengl/ebo.h \
   /Users/jake/Desktop/opengl/glm/common.hpp \
   /Users/jake/Desktop/opengl/glm/detail/qualifier.hpp \
@@ -1139,6 +1140,8 @@ CMakeFiles/main.dir/main.cpp.o: /Users/jake/Desktop/opengl/main.cpp \
   /Users/jake/Desktop/opengl/glad/include/KHR/khrplatform.h \
   /Users/jake/Desktop/opengl/glad/include/glad/glad.h \
   /Users/jake/Desktop/opengl/glfw-3.4/include/GLFW/glfw3.h \
+  /Users/jake/Desktop/opengl/glm/glm.hpp \
+  /Users/jake/Desktop/opengl/glm/gtc/matrix_transform.hpp \
   /Users/jake/Desktop/opengl/shaders.h \
   /Users/jake/Desktop/opengl/stb_image.h \
   /Users/jake/Desktop/opengl/texture.h \
@@ -6113,6 +6116,8 @@ CMakeFiles/main.dir/vbo.cpp.o: /Users/jake/Desktop/opengl/vbo.cpp \
 /Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX14.5.sdk/usr/include/c++/v1/__algorithm/ranges_find.h:
 
 /Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX14.5.sdk/usr/include/_types/_uint64_t.h:
+
+/Users/jake/Desktop/opengl/camera.h:
 
 /Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX14.5.sdk/usr/include/c++/v1/__filesystem/file_status.h:
 

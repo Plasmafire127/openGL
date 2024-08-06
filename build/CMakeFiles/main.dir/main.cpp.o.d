@@ -1104,4 +1104,7 @@ CMakeFiles/main.dir/main.cpp.o: /Users/jake/Desktop/opengl/main.cpp \
   /Users/jake/Desktop/opengl/glad/include/../../glm/gtc/../mat4x2.hpp \
   /Users/jake/Desktop/opengl/glad/include/../../glm/gtc/../mat4x3.hpp \
   /Users/jake/Desktop/opengl/glad/include/../../glm/gtc/type_ptr.inl \
-  /Users/jake/Desktop/opengl/transform.h
+  /Users/jake/Desktop/opengl/transform.h \
+  /Users/jake/Desktop/opengl/camera.h \
+  /Users/jake/Desktop/opengl/glm/glm.hpp \
+  /Users/jake/Desktop/opengl/glm/gtc/matrix_transform.hpp
